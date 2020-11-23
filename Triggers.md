@@ -26,3 +26,21 @@ CREATE TRIGGER TriggerName
     [WHEN Condition]
     <trigger action>
 ```
+
+## A BEFORE Trigger
+``` mysql
+CREATE TRIGGER StaffNotHandlingTooMuch
+BEFORE INSERT ON PropertyForRent
+REFERENCING NEW AS newRow
+FOR EACH ROW
+DECLARE
+      vpCount NUMBER;
+BEGIN
+      SELECT COUNT(*) INTO vpCount
+      FROM PropertyForRent
+      WHERE staffNo = :newRow.staffNo;
+      IF vpCount = 100
+            raise_application_error(-20000, ('Member' || :newRow.staffNo || 'already managing 100 properties');
+      END IF;
+END;
+```
