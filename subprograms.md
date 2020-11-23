@@ -98,4 +98,22 @@ BEGIN
       CLOSE c1;
       RETURN cNumber;
 END;
+
+SELECT course_name, FindCourse(course_name) AS course_id
+FROM courses
+WHERE subject = 'Mathematics';
 ```
+
+## Executing
+<ul>
+  <li>Similar to stored procedures</li>
+  <li>Pass the required parameters along with function
+  </br>name; If function returns a value, you can store
+  </br>returned value</li>
+  <li>Program control is transferred to the called
+  </br>function</li>
+  <li>A called function performs defined task and when
+  </br>its returned statement is executed or when it last end
+  </br>statement is reached, it returns program control
+  </br>back to the main program.</li>
+</ul>
