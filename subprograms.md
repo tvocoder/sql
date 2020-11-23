@@ -22,3 +22,17 @@
     </ul>
   </li>
 </ul>
+
+<h2>Procedure (in PL/SQL)</h2>
+
+``` pgsql
+CREATE [OR REPLACE] PROCEDURE
+proc_name[list of parameters] {IS||AS}
+      Declaration section
+      
+BEGIN
+      Execution section
+      EXCEPTION
+      Exception section
+END;
+```
