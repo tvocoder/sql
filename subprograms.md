@@ -73,5 +73,29 @@ END;
 
 ``` pgsql
 CREATE [OR REPLACE] FUNCTION
-      function_name[(parameter [,paramenter])]
+      function_name[(parameter [,parameter])]
+      RETURN return_datatype
+IS | AS
+      [declaration_section]
+BEGIN
+      executable_section
+      [EXCEPTION exception_section]
+END [function_name];
+```
+## Function Example
+``` pgsql
+CREATE [OR REPLACE] FUNCTION FindCourse(name_in IN VARCHAR(2))
+      RETURN NUMBER
+IS
+      cNumber NUMBER;
+      CURSOR c1 IS
+            SELECT course_number FROM courses_tbl
+            WHERE course_name = name_in;
+BEGIN
+      OPEN c1;
+      FETCH c1 INTO cNumber;
+      ...
+      CLOSE c1;
+      RETURN cNumber;
+END;
 ```
